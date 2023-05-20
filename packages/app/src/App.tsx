@@ -1,15 +1,21 @@
-import React from 'react';
+import { FederationBoundary } from '@module-federation/utilities/src/utils/react';
 import { VERSION } from 'api';
+import React from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 
-const RemoteComponent = React.lazy(() => import('mfe/Component'));
+const dynamicImport = () => import('mfe/Component').then((m) => m.default);
+const fallback = () =>
+  import('./EmptyFallbackComponent').then((m) => m.default);
 
 const App = () => {
   return (
     <>
       <h1>App version {VERSION}.</h1>
-      <React.Suspense>
-        <RemoteComponent />
-      </React.Suspense>
+      <FederationBoundary
+        dynamicImporter={dynamicImport}
+        fallback={fallback}
+        customBoundary={ErrorBoundary}
+      />
     </>
   );
 };
