@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack --mode production --progress",
+    "serve": "serve -l 3002 dist",
     "start": "webpack serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

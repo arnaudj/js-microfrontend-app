@@ -1,4 +1,5 @@
 const path = require('path');
+const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HotModuleReplacementPlugin =
   require('webpack').HotModuleReplacementPlugin;
@@ -31,6 +32,13 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      name: 'mfe',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Component': './src/Component.tsx',
+      },
+    }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
     }),

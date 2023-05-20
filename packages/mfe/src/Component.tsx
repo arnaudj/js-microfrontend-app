@@ -8,7 +8,8 @@ type ComponentProps = {
 const Component = ({ message }: ComponentProps) => {
   return (
     <div>
-      Component with props message "{message}" and API version: {VERSION}
+      Micro frontend component (props message "{message}", API version:{' '}
+      {VERSION})
     </div>
   );
 };

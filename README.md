@@ -8,4 +8,5 @@
 * `npm install --workspaces`
 * `npm run build -w=api`
 * `npm run build -w=mfe`
+* `npm run serve -w=mfe`
 * `npm run start -w=app`

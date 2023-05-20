@@ -1,5 +1,7 @@
 const path = require('path');
+const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { Module } = require('module');
 const HotModuleReplacementPlugin =
   require('webpack').HotModuleReplacementPlugin;
 
@@ -8,6 +10,7 @@ module.exports = {
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: 'http://localhost:9000/',
   },
   module: {
     rules: [
@@ -31,6 +34,12 @@ module.exports = {
     extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
+    new ModuleFederationPlugin({
+      name: 'main_app',
+      remotes: {
+        mfe: 'mfe@http://localhost:3002/remoteEntry.js', // tweak this based on environment / webpack mode
+      },
+    }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
     }),
