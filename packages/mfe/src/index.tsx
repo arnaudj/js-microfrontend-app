@@ -1,6 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { RecoilRoot } from 'recoil';
 import Component from './Component';
+const container = document.getElementById('root');
+const root = createRoot(container!);
 
 /**
  * A dummy entry point, for standalone display
@@ -8,14 +11,15 @@ import Component from './Component';
 const App = () => {
   return (
     <>
-      <Component message="Index" />
+      <RecoilRoot>
+        <Component message="Index" />
+      </RecoilRoot>
     </>
   );
 };
 
-ReactDOM.render(
+root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </React.StrictMode>
 );

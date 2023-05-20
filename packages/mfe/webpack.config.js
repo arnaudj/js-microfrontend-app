@@ -38,6 +38,24 @@ module.exports = {
       exposes: {
         './Component': './src/Component.tsx',
       },
+      shared: {
+        react: {
+          singleton: true,
+          requiredVersion: '^18.2.0',
+        },
+        'react-dom': {
+          singleton: true,
+          requiredVersion: '^18.2.0',
+        },
+        recoil: {
+          singleton: true,
+          requiredVersion: '^0.7.7',
+        },
+        api: {
+          singleton: true,
+          requiredVersion: '^1.0.0',
+        },
+      },
     }),
     new HtmlWebpackPlugin({
       template: 'public/index.html',
