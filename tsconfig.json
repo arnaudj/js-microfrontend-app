@@ -3,5 +3,6 @@
   "references": [
     { "path": "packages/app" },
     { "path": "packages/api" },
+    { "path": "packages/mfe" },
   ]
 }
