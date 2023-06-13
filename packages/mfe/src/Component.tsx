@@ -1,6 +1,8 @@
 import React from 'react';
 import { VERSION, selectedOrderIdsState } from 'api';
-import { selector, useRecoilValue } from 'recoil';
+import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
+import Button from 'ds/Button';
+import Typography from 'ds/Typography';
 
 type ComponentProps = {
   message: string;
@@ -13,11 +15,18 @@ const nbSelectedOrderIdsState = selector({
 
 const Component = ({ message }: ComponentProps) => {
   const nbSelectedOrderIds = useRecoilValue(nbSelectedOrderIdsState);
+  const setSelectedOrderIdsState = useSetRecoilState(selectedOrderIdsState);
+
   return (
-    <div>
-      Micro frontend component (props message "{message}", API version:{' '}
-      {VERSION}) Number of selected items: {nbSelectedOrderIds}
-    </div>
+    <>
+      <Typography variant="body1" gutterBottom>
+        Micro frontend component (props message "{message}", API version:{' '}
+        {VERSION}) Number of selected items: {nbSelectedOrderIds}
+      </Typography>
+      <Button variant="contained" onClick={() => setSelectedOrderIdsState([])}>
+        Reset count
+      </Button>
+    </>
   );
 };
 

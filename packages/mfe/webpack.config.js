@@ -38,6 +38,9 @@ module.exports = {
       exposes: {
         './Component': './src/Component.tsx',
       },
+      remotes: {
+        ds: 'ds@http://localhost:3003/remoteEntry.js', // tweak this based on environment / webpack mode
+      },
       shared: {
         react: {
           singleton: true,
