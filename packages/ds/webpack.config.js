@@ -35,7 +35,8 @@ module.exports = {
       name: 'ds',
       filename: 'remoteEntry.js',
       exposes: {
-        './Button': './src/Button',
+        './Button': './src/button',
+        './Typography': './src/typography',
       },
       shared: {
         react: {
