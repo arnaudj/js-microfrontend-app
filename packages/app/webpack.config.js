@@ -1,7 +1,6 @@
 const path = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { Module } = require('module');
 const HotModuleReplacementPlugin =
   require('webpack').HotModuleReplacementPlugin;
 
@@ -38,6 +37,7 @@ module.exports = {
       name: 'main_app',
       remotes: {
         mfe: 'mfe@http://localhost:3002/remoteEntry.js', // tweak this based on environment / webpack mode
+        ds: 'ds@http://localhost:3003/remoteEntry.js', // tweak this based on environment / webpack mode
       },
       shared: {
         react: {
