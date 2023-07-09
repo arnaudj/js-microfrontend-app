@@ -25,6 +25,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
@@ -37,6 +41,7 @@ module.exports = {
       exposes: {
         './Button': './src/button',
         './Typography': './src/typography',
+        './AgGrid': './src/aggrid',
       },
       shared: {
         react: {
