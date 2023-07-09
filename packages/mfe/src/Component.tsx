@@ -1,5 +1,5 @@
 import React from 'react';
-import { VERSION, selectedOrderIdsState } from 'api';
+import { NONCE, VERSION, selectedOrderIdsState } from 'api';
 import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
 import Button from 'ds/Button';
 import Typography from 'ds/Typography';
@@ -19,9 +19,11 @@ const Component = ({ message }: ComponentProps) => {
 
   return (
     <>
-      <Typography variant="body1" gutterBottom>
-        Micro frontend component (props message "{message}", API version:{' '}
-        {VERSION}) Number of selected items: {nbSelectedOrderIds}
+      <Typography variant="body1">
+        Micro frontend running with API: version={VERSION}, nonce={NONCE}.
+      </Typography>
+      <Typography variant="body1">
+        Number of selected items: {nbSelectedOrderIds}
       </Typography>
       <Button variant="contained" onClick={() => setSelectedOrderIdsState([])}>
         Reset count
