@@ -1,5 +1,5 @@
 import { AgGridReact } from 'ds/AgGrid';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { OrderId, Transaction } from '../../model/Transaction';
 
 interface TransactionsGridProps {
@@ -13,7 +13,7 @@ export default function TransactionsGrid({
   onSelectionChange,
   containerProps,
 }: TransactionsGridProps) {
-  const gridRef = useRef();
+  const [gridAPI, setGridAPI] = useState();
   const [columnDefs, setColumnDefs] = useState([
     {
       field: 'date',
@@ -34,14 +34,18 @@ export default function TransactionsGrid({
     []
   );
 
+  const onGridReady = (e: any) => {
+    setGridAPI(e.api);
+  };
+
   useEffect(() => {
-    if (rowData.length === 0) return;
-    selectAllNodes(gridRef);
-  }, [rowData]);
+    if (rowData.length === 0 || !gridAPI) return;
+    selectAllNodes(gridAPI);
+  }, [rowData, gridAPI]);
 
   const onSelectionChanged = () => {
     // @ts-ignore
-    const selectedRows = gridRef.current.api.getSelectedRows();
+    const selectedRows = gridAPI.getSelectedRows();
     const newSelection = selectedRows
       .map((node: Transaction) => node.orderId)
       .filter((e: OrderId) => e !== undefined);
@@ -52,28 +56,28 @@ export default function TransactionsGrid({
     <div>
       <div {...containerProps}>
         <AgGridReact
-          ref={gridRef}
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={defaultColDef}
           rowSelection="multiple"
           onSelectionChanged={onSelectionChanged}
+          onGridReady={onGridReady}
         />
       </div>
     </div>
   );
 }
 
-function selectAllNodes(gridRef: React.MutableRefObject<undefined>) {
+function selectAllNodes(gridAPI: any) {
   const nodesToSelect: any[] = [];
   // @ts-ignore
-  gridRef.current.api.forEachNode((node: any) => {
+  gridAPI.forEachNode((node: any) => {
     if (node.data && node.data.instrument !== '') {
       nodesToSelect.push(node);
     }
   });
   // @ts-ignore
-  gridRef.current.api.setNodesSelected({
+  gridAPI.setNodesSelected({
     nodes: nodesToSelect,
     newValue: true,
   });
