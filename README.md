@@ -7,12 +7,8 @@ Build:
 
 Start all (dev):
 * `npm run serve -w=ds`
-* `npm run serve -w=mfe`
+* `npm run start -w=mfe`
 * `npm run start -w=app`
-
-Refresh only `mfe`
-* `npm run build -w=mfe`
-* `npm run serve -w=mfe`
 
 ## Architecture
 
