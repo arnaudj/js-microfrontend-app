@@ -42,6 +42,7 @@ module.exports = {
         './Button': './src/button',
         './Typography': './src/typography',
         './AgGrid': './src/aggrid',
+        './Stack': './src/stack',
       },
       shared: {
         react: {
