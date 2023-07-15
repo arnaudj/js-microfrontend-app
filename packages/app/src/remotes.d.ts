@@ -1,5 +1,11 @@
-declare module "mfe/Component";
-declare module "ds/Button";
-declare module "ds/Typography";
-declare module "ds/AgGrid";
-declare module "ds/Stack";
+declare module 'ds/AgGrid';
+declare module 'ds/Button';
+declare module 'ds/Card';
+declare module 'ds/CardActions';
+declare module 'ds/CardContent';
+declare module 'ds/Collapse';
+declare module 'ds/IconButton';
+declare module 'ds/Stack';
+declare module 'ds/Typography';
+declare module 'ds/Stack';
+declare module 'mfe/Component';
