@@ -1,8 +1,12 @@
-import React from 'react';
-import { NONCE, VERSION, selectedOrderIdsState } from 'api';
-import { selector, useRecoilValue, useSetRecoilState } from 'recoil';
-import { Button } from 'ds/Button';
+import {
+  NONCE,
+  VERSION,
+  isDebugModeEnabledState,
+  selectedOrderIdsState,
+} from 'api';
 import { Typography } from 'ds/Typography';
+import React from 'react';
+import { selector, useRecoilValue } from 'recoil';
 
 type ComponentProps = {
   message: string;
@@ -15,19 +19,18 @@ const nbSelectedOrderIdsState = selector({
 
 const Component = ({ message }: ComponentProps) => {
   const nbSelectedOrderIds = useRecoilValue(nbSelectedOrderIdsState);
-  const setSelectedOrderIdsState = useSetRecoilState(selectedOrderIdsState);
+  const isDebugModeEnabled = useRecoilValue(isDebugModeEnabledState);
 
   return (
-    <div style={{ border: 'solid green' }}>
-      <Typography variant="body1">
-        Micro frontend running with API: version={VERSION}, nonce={NONCE}
-      </Typography>
+    <div style={{ border: isDebugModeEnabled ? 'dashed green' : undefined }}>
       <Typography variant="body1">
         Number of selected items: {nbSelectedOrderIds}
       </Typography>
-      <Button variant="contained" onClick={() => setSelectedOrderIdsState([])}>
-        Reset count
-      </Button>
+      {isDebugModeEnabled && (
+        <Typography variant="body1">
+          Micro frontend running with API: version={VERSION}, nonce={NONCE}
+        </Typography>
+      )}
     </div>
   );
 };

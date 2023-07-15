@@ -5,11 +5,13 @@ import { OrderId, Transaction } from '../../model/Transaction';
 interface TransactionsGridProps {
   onSelectionChange: (selection: string[]) => void;
   rowData: Transaction[];
+  containerProps: object;
 }
 
 export default function TransactionsGrid({
   rowData,
   onSelectionChange,
+  containerProps,
 }: TransactionsGridProps) {
   const gridRef = useRef();
   const [columnDefs, setColumnDefs] = useState([
@@ -48,7 +50,7 @@ export default function TransactionsGrid({
 
   return (
     <div>
-      <div className="ag-theme-alpine" style={{ width: 710, height: 460 }}>
+      <div {...containerProps}>
         <AgGridReact
           ref={gridRef}
           rowData={rowData}

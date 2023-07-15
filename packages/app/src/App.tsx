@@ -1,6 +1,6 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
-import MainPage from './MainPage';
+import TransactionsPage from './TransactionsPage';
 import { transactionsServiceState } from './state';
 import { TransactionServiceDummyImpl } from './services/TransactionsService';
 
@@ -12,7 +12,7 @@ const App = () => {
           set(transactionsServiceState, new TransactionServiceDummyImpl());
         }}
       >
-        <MainPage />
+        <TransactionsPage />
       </RecoilRoot>
     </>
   );

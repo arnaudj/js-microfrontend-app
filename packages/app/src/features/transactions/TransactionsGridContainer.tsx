@@ -1,4 +1,9 @@
-import { NONCE, VERSION, selectedOrderIdsState } from 'api';
+import {
+  NONCE,
+  VERSION,
+  selectedOrderIdsState,
+  isDebugModeEnabledState,
+} from 'api';
 import { Typography } from 'ds/Typography';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
@@ -14,6 +19,7 @@ export function TransactionsGridContainer(props: TransactionsContainerProps) {
     selectedOrderIdsState
   );
   const [rowData, setRowData] = useState<Transaction[]>([]);
+  const isDebugModeEnabled = useRecoilValue(isDebugModeEnabledState);
 
   useEffect(() => {
     console.log('App selectedOrderIds changed: ', selectedOrderIds);
@@ -25,16 +31,25 @@ export function TransactionsGridContainer(props: TransactionsContainerProps) {
   }, [transactionsServiceState]);
 
   return (
-    <>
+    <div style={{ border: isDebugModeEnabled ? 'dashed blue' : undefined }}>
       <TransactionsGrid
         rowData={rowData}
         onSelectionChange={(selection: string[]) =>
           setSelectedOrderIds(selection)
         }
+        containerProps={{
+          className: 'ag-theme-alpine',
+          style: {
+            width: 710,
+            height: 460,
+          },
+        }}
       />
-      <Typography variant="body1">
-        App running with API: version={VERSION}, nonce={NONCE}
-      </Typography>
-    </>
+      {isDebugModeEnabled && (
+        <Typography variant="body1">
+          App running with API: version={VERSION}, nonce={NONCE}
+        </Typography>
+      )}
+    </div>
   );
 }
