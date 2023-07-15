@@ -1,5 +1,5 @@
 import { NONCE, VERSION, selectedOrderIdsState } from 'api';
-import Typography from 'ds/Typography';
+import { Typography } from 'ds/Typography';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Transaction } from '../../model/Transaction';
