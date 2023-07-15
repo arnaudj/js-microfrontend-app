@@ -1,10 +1,12 @@
+export type OrderId = string;
+
 export interface Transaction {
   date: string;
   instrument: string;
   side: Side;
   price: number;
   quantity: number;
-  orderId: string;
+  orderId: OrderId;
 }
 
 export enum Side {

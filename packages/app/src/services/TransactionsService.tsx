@@ -9,7 +9,7 @@ export class TransactionServiceDummyImpl implements TransactionService {
     return Promise.resolve([
       {
         date: '2009-01-10 18:15:05',
-        instrument: 'BTC',
+        instrument: 'BTC-USD',
         side: Side.Buy,
         price: 1,
         quantity: 0.05,
@@ -17,7 +17,7 @@ export class TransactionServiceDummyImpl implements TransactionService {
       } as Transaction,
       {
         date: '2009-01-11 11:33:37',
-        instrument: 'BTC',
+        instrument: 'BTC-USD',
         side: Side.Buy,
         price: 2,
         quantity: 0.05,
@@ -25,7 +25,7 @@ export class TransactionServiceDummyImpl implements TransactionService {
       } as Transaction,
       {
         date: '2022-11-15 12:34:56',
-        instrument: 'BTC',
+        instrument: 'BTC-USD',
         side: Side.Buy,
         price: 17000,
         quantity: 0.01,
