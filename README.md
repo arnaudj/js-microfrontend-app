@@ -6,7 +6,7 @@ Build:
 * `npm run build -ws`
 
 Start all (dev):
-* `npm run serve -w=ds`
+* `npm run start -w=ds`
 * `npm run start -w=mfe`
 * `npm run start -w=app`
 

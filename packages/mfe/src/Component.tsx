@@ -7,6 +7,7 @@ import {
 import { Typography } from 'ds/Typography';
 import React from 'react';
 import { selector, useRecoilValue } from 'recoil';
+import AssetsAllocation from './features/assetsallocation/AssetsAllocation';
 
 type ComponentProps = {
   message: string;
@@ -22,7 +23,13 @@ const Component = ({ message }: ComponentProps) => {
   const isDebugModeEnabled = useRecoilValue(isDebugModeEnabledState);
 
   return (
-    <div style={{ border: isDebugModeEnabled ? 'dashed green' : undefined }}>
+    <div
+      style={{
+        width: '400px',
+        border: isDebugModeEnabled ? 'dashed green' : undefined,
+      }}
+    >
+      <AssetsAllocation />
       <Typography variant="body1">
         Number of selected items: {nbSelectedOrderIds}
       </Typography>
