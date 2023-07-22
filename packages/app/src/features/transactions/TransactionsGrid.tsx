@@ -1,6 +1,6 @@
+import { OrderId, Transaction } from 'api';
 import { AgGridReact } from 'ds/AgGrid';
 import React, { useEffect, useMemo, useState } from 'react';
-import { OrderId, Transaction } from '../../model/Transaction';
 
 interface TransactionsGridProps {
   onSelectionChange: (selection: string[]) => void;

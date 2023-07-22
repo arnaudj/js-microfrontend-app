@@ -3,11 +3,11 @@ import {
   VERSION,
   selectedOrderIdsState,
   isDebugModeEnabledState,
+  transactionsState,
 } from 'api';
 import { Typography } from 'ds/Typography';
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Transaction } from '../../model/Transaction';
 import { transactionsServiceState } from '../../state';
 import TransactionsGrid from './TransactionsGrid';
 
@@ -18,7 +18,7 @@ export function TransactionsGridContainer(props: TransactionsContainerProps) {
   const [selectedOrderIds, setSelectedOrderIds] = useRecoilState(
     selectedOrderIdsState
   );
-  const [rowData, setRowData] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useRecoilState(transactionsState);
   const isDebugModeEnabled = useRecoilValue(isDebugModeEnabledState);
 
   useEffect(() => {
@@ -27,13 +27,13 @@ export function TransactionsGridContainer(props: TransactionsContainerProps) {
 
   useEffect(() => {
     if (!transactionsService) return;
-    transactionsService.getTransactions().then((data) => setRowData(data));
+    transactionsService.getTransactions().then((data) => setTransactions(data));
   }, [transactionsServiceState]);
 
   return (
     <div style={{ border: isDebugModeEnabled ? 'dashed blue' : undefined }}>
       <TransactionsGrid
-        rowData={rowData}
+        rowData={transactions}
         onSelectionChange={(selection: string[]) =>
           setSelectedOrderIds(selection)
         }
