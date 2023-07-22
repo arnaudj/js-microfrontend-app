@@ -1,5 +1,5 @@
 import { Side, Transaction, selectedOrderIdsState, transactionsState } from 'api';
-import { selector } from 'recoil';
+import { atom, atomFamily, selector } from 'recoil';
 import { Position } from '../model';
 
 export const activeTransactionsState = selector<Transaction[]>({
@@ -30,6 +30,24 @@ export const activePositionsState = selector<Map<string, Position>>({
       updatePositionWithTransaction(pos, transaction);
     });
     return positions;
+  },
+});
+
+export const instrumentPriceFamilyState = atomFamily<number, string>({
+  key: 'instrumentPriceFamily',
+  default: 0,
+});
+
+export const activePositionCashAllocationState = selector<Map<string, number>>({
+  key: 'activePositionCashAllocation',
+  get: ({ get }) => {
+    const cashAllocByInstrument = new Map<string, number>();
+    get(activePositionsState).forEach((position: Position) => {
+      const price = get(instrumentPriceFamilyState(position.instrument));
+      const capitalization = position.quantity * price;
+      cashAllocByInstrument.set(position.instrument, capitalization);
+    });
+    return cashAllocByInstrument;
   },
 });
 
