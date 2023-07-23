@@ -22,7 +22,7 @@ export default function Widget({ title, subTitle, children }: WidgetProps) {
         }}
       >
         <IconButton onClick={() => setExpanded((prev) => !prev)}>
-          {expanded ? '^' : '⌄'}
+          <Typography>{expanded ? '⬆' : '⬇'}</Typography>
         </IconButton>
       </div>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -31,7 +31,7 @@ export default function Widget({ title, subTitle, children }: WidgetProps) {
             <Typography variant="h5" component="div">
               {title}
             </Typography>
-            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            <Typography sx={{ mb: 1.5, paddingLeft: '2px' }} color="text.secondary">
               {subTitle}
             </Typography>
             {children}
