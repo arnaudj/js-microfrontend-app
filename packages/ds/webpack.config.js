@@ -1,7 +1,6 @@
 const path = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
-const HotModuleReplacementPlugin =
-  require('webpack').HotModuleReplacementPlugin;
+const HotModuleReplacementPlugin = require('webpack').HotModuleReplacementPlugin;
 
 module.exports = {
   entry: './src/index.tsx',
@@ -17,11 +16,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript',
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
@@ -44,6 +39,7 @@ module.exports = {
         './Card': './src/card',
         './CardActions': './src/cardactions',
         './CardContent': './src/cardcontent',
+        './GoogleChart': './src/googlechart',
         './Collapse': './src/collapse',
         './IconButton': './src/iconbutton',
         './Stack': './src/stack',

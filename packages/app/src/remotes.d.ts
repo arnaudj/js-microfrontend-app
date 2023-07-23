@@ -4,6 +4,7 @@ declare module 'ds/Card';
 declare module 'ds/CardActions';
 declare module 'ds/CardContent';
 declare module 'ds/Collapse';
+declare module 'ds/GoogleChart';
 declare module 'ds/IconButton';
 declare module 'ds/Stack';
 declare module 'ds/Typography';
