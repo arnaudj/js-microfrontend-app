@@ -38,7 +38,7 @@ export default function AssetsAllocation() {
       <Typography>Instrument quantities:</Typography>
       {Array.from(positions.entries()).map((p) => (
         <Typography key={'qty-' + p[0]}>
-          - {p[0]}: {p[1].quantity} units
+          - {p[0]}: {Number(p[1].quantity.toFixed(2))} units
         </Typography>
       ))}
     </Widget>
