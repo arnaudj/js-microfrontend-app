@@ -13,6 +13,9 @@ Build and serve locally:
 * `npm run build`
 * `npm run serve`
 
+## Overview
+<img src="doc/core-ep-overview-github.svg" width="700">
+
 ## Architecture
 
 Packages:
