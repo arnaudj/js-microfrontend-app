@@ -1,3 +1,5 @@
+[![CI](https://github.com/arnaudj/js-microfrontend-app/actions/workflows/ci-build-test.js.yml/badge.svg)](https://github.com/arnaudj/js-microfrontend-app/actions/workflows/ci-build-test.js.yml)
+
 ## Commands
 
 * `npm install -ws`
@@ -18,6 +20,10 @@ Packages:
 * `api` provides a shared state used by `app` and `mfe`, as a shared singleton
 * `mfe`: micro frontend, exposes a remote component consumed by `app`
 * `ds`: design-system, exposes standard components for consumption by other UI packages
+
+## Demo
+
+https://js-microfrontend-app.netlify.app/
 
 
 ## References
