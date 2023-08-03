@@ -2,13 +2,14 @@
 
 * `npm install -ws`
 
-Build:
-* `npm run build -ws`
-
 Start all (dev):
 * `npm run start -w=ds`
 * `npm run start -w=mfe`
 * `npm run start -w=app`
+
+Build and serve locally:
+* `npm run build`
+* `npm run serve`
 
 ## Architecture
 
