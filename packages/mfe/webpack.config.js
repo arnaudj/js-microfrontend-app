@@ -1,10 +1,9 @@
 const path = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HotModuleReplacementPlugin =
-  require('webpack').HotModuleReplacementPlugin;
+const HotModuleReplacementPlugin = require('webpack').HotModuleReplacementPlugin;
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/index.tsx',
   mode: 'development',
   output: {
@@ -18,11 +17,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript',
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
@@ -39,7 +34,7 @@ module.exports = {
         './Component': './src/Component.tsx',
       },
       remotes: {
-        ds: 'ds@http://localhost:3003/remoteEntry.js', // tweak this based on environment / webpack mode
+        ds: argv.mode === 'development' ? 'ds@http://localhost:3003/remoteEntry.js' : 'ds@/ds/remoteEntry.js',
       },
       shared: {
         react: {
@@ -74,4 +69,4 @@ module.exports = {
     port: 9010,
     open: true,
   },
-};
+});

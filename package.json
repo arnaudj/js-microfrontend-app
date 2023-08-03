@@ -4,12 +4,18 @@
   "description": "Demo application with a micro frontend",
   "main": "index.js",
   "scripts": {
-    "build": "npx tsc --build",
+    "prebuild": "rm -f packages/**/tsconfig.tsbuildinfo && rm -rf packages/api/dist && rm -rf packages/app/dist && rm -rf package/ds/dist && rm -rf packages/mfe/dist",
+    "build": "npm run build --ws",
+    "postbuild": "rm -rf dist && mkdir dist && cp -R packages/app/dist/ dist && cp -R packages/mfe/dist/ dist/mfe && cp -R packages/ds/dist/ dist/ds",
     "start": "node packages/app/dist/index.js",
+    "serve": "npx serve dist",
     "test": "jest"
   },
   "workspaces": [
-    "packages/*"
+    "packages/api",
+    "packages/ds",
+    "packages/mfe",
+    "packages/app"
   ],
   "repository": {
     "type": "git",

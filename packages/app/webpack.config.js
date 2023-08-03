@@ -1,15 +1,14 @@
 const path = require('path');
 const { ModuleFederationPlugin } = require('webpack').container;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HotModuleReplacementPlugin =
-  require('webpack').HotModuleReplacementPlugin;
+const HotModuleReplacementPlugin = require('webpack').HotModuleReplacementPlugin;
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/index.tsx',
   mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: 'http://localhost:9000/',
+    publicPath: '',
   },
   module: {
     rules: [
@@ -19,11 +18,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              '@babel/preset-env',
-              '@babel/preset-react',
-              '@babel/preset-typescript',
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
@@ -36,8 +31,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: 'main_app',
       remotes: {
-        mfe: 'mfe@http://localhost:3002/remoteEntry.js', // tweak this based on environment / webpack mode
-        ds: 'ds@http://localhost:3003/remoteEntry.js', // tweak this based on environment / webpack mode
+        mfe: argv.mode === 'development' ? 'mfe@http://localhost:3002/remoteEntry.js' : 'mfe@/mfe/remoteEntry.js',
+        ds: argv.mode === 'development' ? 'ds@http://localhost:3003/remoteEntry.js' : 'ds@/ds/remoteEntry.js',
       },
       shared: {
         react: {
@@ -72,4 +67,4 @@ module.exports = {
     port: 9000,
     open: true,
   },
-};
+});
