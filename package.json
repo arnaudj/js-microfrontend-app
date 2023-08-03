@@ -4,7 +4,7 @@
   "description": "Demo application with a micro frontend",
   "main": "index.js",
   "scripts": {
-    "prebuild": "rm -f packages/**/tsconfig.tsbuildinfo && rm -rf packages/api/dist && rm -rf packages/app/dist && rm -rf package/ds/dist && rm -rf packages/mfe/dist",
+    "prebuild": "rm -f packages/**/tsconfig.tsbuildinfo && rm -rf packages/api/dist && rm -rf packages/app/dist && rm -rf packages/ds/dist && rm -rf packages/mfe/dist",
     "build": "npm run build --ws",
     "postbuild": "rm -rf dist && mkdir dist && cp -R packages/app/dist/ dist && cp -R packages/mfe/dist/ dist/mfe && cp -R packages/ds/dist/ dist/ds",
     "start": "node packages/app/dist/index.js",
