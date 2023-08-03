@@ -1,4 +1,4 @@
-[![CI](https://github.com/arnaudj/js-microfrontend-app/actions/workflows/ci-build-test.js.yml/badge.svg)](https://github.com/arnaudj/js-microfrontend-app/actions/workflows/ci-build-test.js.yml)
+[![CI](https://github.com/arnaudj/js-microfrontend-app/actions/workflows/ci-build-test.js.yml/badge.svg)](https://github.com/arnaudj/js-microfrontend-app/actions/workflows/ci-build-test.js.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/0cb6b5e8-e4d1-41e8-a750-8d1f859fcd5d/deploy-status)](https://app.netlify.com/sites/js-microfrontend-app/deploys)
 
 ## Commands
 
