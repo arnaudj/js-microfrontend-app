@@ -130,3 +130,5 @@ dist
 .pnp.*
 
 **/*tsbuildinfo
+# Local Netlify folder
+.netlify
